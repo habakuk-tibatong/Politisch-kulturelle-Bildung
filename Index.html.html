@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Politische Bildung am Pirckheimer-Gymnasium</title>
+  <style>
+    @import url('https://fonts.cdnfonts.com/css/segoe-ui-4');
+
+    body {
+      margin: 0;
+      padding: 30px 15px;
+      background-color: #ffffff;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #2D3748;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .motto-container {
+      max-width: 840px;
+      margin-bottom: 24px;
+    }
+
+    .motto-title {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: #3D5774;
+      margin: 0 0 8px 0;
+      line-height: 1.3;
+    }
+
+    .motto-sub {
+      font-size: 1.05rem;
+      color: #55697d;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .demokratie-rad-container {
+      max-width: 920px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .rad-klick {
+      transition: opacity 0.2s ease, filter 0.2s ease;
+      cursor: pointer;
+    }
+    .rad-klick:hover {
+      opacity: 0.86;
+      filter: drop-shadow(0 3px 6px rgba(61,87,116,0.3));
+    }
+
+    .text-curved-main { font-weight: 700; fill: #ffffff; font-size: 13px; letter-spacing: 1px; pointer-events: none; }
+    .text-curved-sub  { font-weight: 600; fill: #f0f4f8; font-size: 9px; pointer-events: none; }
+    .fuez-curved      { font-size: 8px; font-weight: 700; fill: #3D5774; letter-spacing: 0.4px; pointer-events: none; }
+    .proj-radial      { font-size: 9.2px; font-weight: 600; fill: #1E2E3E; pointer-events: none; }
+    .center-normal-main { font-size: 14px; font-weight: 700; fill: #ffffff; letter-spacing: 0.6px; text-anchor: middle; pointer-events: none; }
+    .center-normal-sub  { font-size: 11.5px; font-weight: 700; fill: #EF7D00; letter-spacing: 0.5px; text-anchor: middle; pointer-events: none; }
+
+    /* Schwebender Tooltip */
+    #rad-tooltip {
+      position: fixed;
+      display: none;
+      max-width: 280px;
+      background: #3D5774;
+      color: #ffffff;
+      padding: 10px 14px;
+      border-radius: 6px;
+      border-left: 4px solid #EF7D00;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      text-align: left;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+      pointer-events: none;
+      z-index: 1000;
+    }
+    #rad-tooltip strong {
+      display: block;
+      color: #EF7D00;
+      margin-bottom: 3px;
+      font-size: 0.9rem;
+    }
+
+    .link-box {
+      margin-top: 18px;
+      font-size: 0.95rem;
+    }
+    .link-box a {
+      color: #3D5774;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MOTTO-BEREICH -->
+  <div class="motto-container">
+    <h1 class="motto-title">Politische Bildung am Pirckheimer-Gymnasium</h1>
+    <p class="motto-sub">Urteilsfähig im Denken, verantwortlich im Handeln, couragiert im Miteinander: Vom Klassenzimmer über die 3-Dutzend-Konferenz bis in die vernetzte Welt.</p>
+  </div>
+
+  <!-- TOOLTIP-BOX -->
+  <div id="rad-tooltip"></div>
+
+  <!-- DEMOKRATIE-RAD (SVG) -->
+  <div class="demokratie-rad-container">
+    <svg viewBox="0 0 840 840" width="100%" height="100%">
+      <defs>
+        <!-- PFADE FÜR DIE 8 FÜZ (Radius 194) -->
+        <path id="path-fuez-n"  d="M 420.0 226.0 A 194 194 0 0 1 557.2 282.8" fill="none" />
+        <path id="path-fuez-no" d="M 557.2 282.8 A 194 194 0 0 1 614.0 420.0" fill="none" />
+        <path id="path-fuez-so" d="M 614.0 420.0 A 194 194 0 0 1 557.2 557.2" fill="none" />
+        <path id="path-fuez-s"  d="M 557.2 557.2 A 194 194 0 0 1 420.0 614.0" fill="none" />
+        <path id="path-fuez-sw" d="M 420.0 614.0 A 194 194 0 0 1 282.8 557.2" fill="none" />
+        <path id="path-fuez-ws" d="M 282.8 557.2 A 194 194 0 0 1 226.0 420.0" fill="none" />
+        <path id="path-fuez-wn" d="M 226.0 420.0 A 194 194 0 0 1 282.8 282.8" fill="none" />
+        <path id="path-fuez-nw" d="M 282.8 282.8 A 194 194 0 0 1 420.0 226.0" fill="none" />
+
+        <!-- PFADE FÜR DIE 4 HAUPTKATEGORIEN (Radius 138 / 114) -->
+        <path id="path-mitwirkung-main" d="M 420.0 282.0 A 138 138 0 0 1 558.0 420.0" fill="none" />
+        <path id="path-unterricht-main" d="M 420.0 558.0 A 138 138 0 0 0 558.0 420.0" fill="none" />
+        <path id="path-ausser-main"     d="M 420.0 558.0 A 138 138 0 0 1 282.0 420.0" fill="none" />
+        <path id="path-koop-main"       d="M 282.0 420.0 A 138 138 0 0 1 420.0 282.0" fill="none" />
+
+        <path id="path-mitwirkung-sub"  d="M 420.0 306.0 A 114 114 0 0 1 534.0 420.0" fill="none" />
+        <path id="path-unterricht-sub"  d="M 420.0 534.0 A 114 114 0 0 0 534.0 420.0" fill="none" />
+        <path id="path-ausser-sub"      d="M 420.0 534.0 A 114 114 0 0 1 306.0 420.0" fill="none" />
+        <path id="path-koop-sub"        d="M 306.0 420.0 A 114 114 0 0 1 420.0 306.0" fill="none" />
+      </defs>
+
+      <!-- HINTERGRUND-KREIS -->
+      <circle cx="420" cy="420" r="413" fill="#F4F8F9" stroke="#58AEBA" stroke-width="2" />
+
+      <!-- ================= 1. ÄUSSERSTER RING: ALLE 25 PROJEKTE & AKs MIT TOOLTIPS ================= -->
+      <!-- Quadrant 1: Mitwirkung (6 Segmente) -->
+      <path class="rad-klick" data-title="SMV & Schülersprecherteam" data-desc="Gewählte Schülervertretung, Klassensprecherversammlung, Urwahlen und Mitwirkung im Schulforum." d="M 420.0 12.0 A 408 408 0 0 1 525.6 25.9 L 477.7 204.6 A 223 223 0 0 0 420.0 197.0 Z" fill="#FCE2C8" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="3-Dutzend-Konferenz" data-desc="Paritätisches Mitbestimmungsforum aus 36 Delegierten von Schülerschaft, Kollegium und Elternschaft." d="M 525.6 25.9 A 408 408 0 0 1 624.0 66.7 L 531.5 226.9 A 223 223 0 0 0 477.7 204.6 Z" fill="#FDEBD9" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Schulparlament (loading)" data-desc="Weiterentwicklung der demokratischen Schülerpartizipation am PGN." d="M 624.0 66.7 A 408 408 0 0 1 708.5 131.5 L 577.7 262.3 A 223 223 0 0 0 531.5 226.9 Z" fill="#FCE2C8" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="AK Feedback & Impuls-Gruppe" data-desc="Dialogkultur auf Augenhöhe: Evaluation von Lernprozessen und Thinktank für Schulentwicklung." d="M 708.5 131.5 A 408 408 0 0 1 773.3 216.0 L 613.1 308.5 A 223 223 0 0 0 577.7 262.3 Z" fill="#FDEBD9" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Tutoren-/Mentoren-System" data-desc="Ältere Schülerinnen und Schüler begleiten die 5. Klassen beim Ankommen am PGN." d="M 773.3 216.0 A 408 408 0 0 1 814.1 314.4 L 635.4 362.3 A 223 223 0 0 0 613.1 308.5 Z" fill="#FCE2C8" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Klassenrat & Partizipation" data-desc="Regelmäßige Klassenforen zur demokratischen Konfliktlösung und Aushandlung eigener Anliegen." d="M 814.1 314.4 A 408 408 0 0 1 828.0 420.0 L 643.0 420.0 A 223 223 0 0 0 635.4 362.3 Z" fill="#FDEBD9" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+
+      <!-- Quadrant 2: Unterrichtliches (6 Segmente) -->
+      <path class="rad-klick" data-title="Politische Bildung (alle Fächer)" data-desc="Fächerübergreifendes Bildungs- und Erziehungsziel gemäß Bayerischer Verfassung und Beutelsbacher Konsens." d="M 828.0 420.0 A 408 408 0 0 1 814.1 525.6 L 635.4 477.7 A 223 223 0 0 0 643.0 420.0 Z" fill="#DCE4EC" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Leitfächer: PuG, Gesch., WR, Geo" data-desc="Fundierte politische, historische, wirtschaftliche und räumliche Urteilsbildung." d="M 814.1 525.6 A 408 408 0 0 1 773.3 624.0 L 613.1 531.5 A 223 223 0 0 0 635.4 477.7 Z" fill="#E8EEF4" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Debattier- & Diskursschulung" data-desc="Argumentations- und Gesprächstraining im Deutschunterricht sowie bei Jugend debattiert." d="M 773.3 624.0 A 408 408 0 0 1 708.5 708.5 L 577.7 577.7 A 223 223 0 0 0 613.1 531.5 Z" fill="#DCE4EC" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Bilingual & Forscherklassen" data-desc="Internationale Perspektiven im bilingualen Unterricht und kritisch-forschendes Lernen ab Klasse 5." d="M 708.5 708.5 A 408 408 0 0 1 624.0 773.3 L 531.5 613.1 A 223 223 0 0 0 577.7 577.7 Z" fill="#E8EEF4" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Verfassungsviertelstunde" data-desc="Regelmäßige Impulse zu Grundrechten, Demokratie und aktuellem politischen Geschehen." d="M 624.0 773.3 A 408 408 0 0 1 525.6 814.1 L 477.7 635.4 A 223 223 0 0 0 531.5 613.1 Z" fill="#DCE4EC" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Medienbildung im Unterricht" data-desc="Quellenkritik, Erkennen von Desinformation und reflektierte digitale Kommunikation." d="M 525.6 814.1 A 408 408 0 0 1 420.0 828.0 L 420.0 643.0 A 223 223 0 0 0 477.7 635.4 Z" fill="#E8EEF4" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+
+      <!-- Quadrant 3: Außerunterrichtliches (7 Segmente) -->
+      <path class="rad-klick" data-title="AK Schule ohne Rassismus" data-desc="Aktionen, Ausstellungen und Projekttage gegen Diskriminierung und für Zivilcourage." d="M 420.0 828.0 A 408 408 0 0 1 329.2 817.8 L 370.4 637.4 A 223 223 0 0 0 420.0 643.0 Z" fill="#D2E8EB" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="AK Nachhaltigkeit (BNE)" data-desc="Projekte zu Klimaschutz, Ressourcenschonung und globaler Verantwortung am Schulcampus." d="M 329.2 817.8 A 408 408 0 0 1 243.0 787.6 L 323.2 620.9 A 223 223 0 0 0 370.4 637.4 Z" fill="#E1F0F2" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Schülerzeitung „WiBa“" data-desc="Journalistische Recherche, freie Meinungsäußerung und Medienpraxis durch unsere Schülerredaktion." d="M 243.0 787.6 A 408 408 0 0 1 165.6 739.0 L 281.0 594.3 A 223 223 0 0 0 323.2 620.9 Z" fill="#D2E8EB" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Play Fair & Schulsanitäter" data-desc="Mobbing-Prävention in Klasse 5 (Play Fair) und gelebte Erste-Hilfe-Verantwortung im Schulalltag." d="M 165.6 739.0 A 408 408 0 0 1 101.0 674.4 L 245.7 559.0 A 223 223 0 0 0 281.0 594.3 Z" fill="#E1F0F2" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Erinnerungskultur & Flossenbürg" data-desc="Gedenkstättenfahrten, Zeitzeugengespräche und Auseinandersetzung mit NS-Verbrechen." d="M 101.0 674.4 A 408 408 0 0 1 52.4 597.0 L 219.1 516.8 A 223 223 0 0 0 245.7 559.0 Z" fill="#D2E8EB" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Medienkonzept & Medienscouts" data-desc="Schüler-Multiplikatoren unterstützen bei Cybermobbing-Prävention und sicherer Mediennutzung." d="M 52.4 597.0 A 408 408 0 0 1 22.2 510.8 L 202.6 469.6 A 223 223 0 0 0 219.1 516.8 Z" fill="#E1F0F2" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Streitschlichter:innen" data-desc="Ausgebildete Schülerinnen und Schüler vermitteln konstruktiv bei Konflikten auf Augenhöhe." d="M 22.2 510.8 A 408 408 0 0 1 12.0 420.0 L 197.0 420.0 A 223 223 0 0 0 202.6 469.6 Z" fill="#D2E8EB" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+
+      <!-- Quadrant 4: Kooperationen (6 Segmente) -->
+      <path class="rad-klick" data-title="Austausch: Mayenne, Rom, Bolton" data-desc="Europäische Begegnung und interkultureller Dialog durch unsere internationalen Schulpartnerschaften." d="M 12.0 420.0 A 408 408 0 0 1 25.9 314.4 L 204.6 362.3 A 223 223 0 0 0 197.0 420.0 Z" fill="#FCE2C8" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Girls‘ Day Akademie am PGN" data-desc="Abbau von Rollenstereotypen und Förderung von Mädchen in technischen Zukunftsberufen." d="M 25.9 314.4 A 408 408 0 0 1 66.7 216.0 L 226.9 308.5 A 223 223 0 0 0 204.6 362.3 Z" fill="#FDEBD9" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Lokale Netzwerke in Nürnberg" data-desc="Kooperation mit Stadtjugendring, Nürnberger Rathaus, Gerichten und regionalen Erinnerungsstätten." d="M 66.7 216.0 A 408 408 0 0 1 131.5 131.5 L 262.3 262.3 A 223 223 0 0 0 226.9 308.5 Z" fill="#FCE2C8" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Alumni & Freunde des PGN e. V." data-desc="Zivilgesellschaftliche Unterstützung durch Ehemalige, Förderverein und berufliche Netzwerke." d="M 131.5 131.5 A 408 408 0 0 1 216.0 66.7 L 308.5 226.9 A 223 223 0 0 0 262.3 262.3 Z" fill="#FDEBD9" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="„Ganz Theater“ – Theater-Modell" data-desc="Kulturelle Bildung und ästhetisch-gesellschaftliche Ausdrucksfähigkeit in Kooperation mit Theaterpartnern." d="M 216.0 66.7 A 408 408 0 0 1 314.4 25.9 L 362.3 204.6 A 223 223 0 0 0 308.5 226.9 Z" fill="#FCE2C8" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Ganztag: gebunden und offen" data-desc="Soziales Lernen, Gemeinschaft und vielfältige Bildungsangebote in Zusammenarbeit mit Ganztagspartnern." d="M 314.4 25.9 A 408 408 0 0 1 420.0 12.0 L 420.0 197.0 A 223 223 0 0 0 362.3 204.6 Z" fill="#FDEBD9" stroke="#ffffff" stroke-width="1.5" onclick="openBoard()" />
+
+      <!-- RADIALE SPEICHEN-BESCHRIFTUNG (25 Projekte & AKs) -->
+      <text x="461.2" y="107.2" class="proj-radial" transform="rotate(277.5, 461.2, 107.2)" dominant-baseline="central" text-anchor="middle">SMV &amp; Schülersprecherteam</text>
+      <text x="540.7" y="128.5" class="proj-radial" transform="rotate(292.5, 540.7, 128.5)" dominant-baseline="central" text-anchor="middle">3-Dutzend-Konferenz</text>
+      <text x="612.1" y="169.7" class="proj-radial" transform="rotate(307.5, 612.1, 169.7)" dominant-baseline="central" text-anchor="middle">Schulparlament (loading)</text>
+      <text x="670.3" y="227.9" class="proj-radial" transform="rotate(322.5, 670.3, 227.9)" dominant-baseline="central" text-anchor="middle">AK Feedback &amp; Impuls-Gruppe</text>
+      <text x="711.5" y="299.3" class="proj-radial" transform="rotate(337.5, 711.5, 299.3)" dominant-baseline="central" text-anchor="middle">Tutoren-/Mentoren-System</text>
+      <text x="732.8" y="378.8" class="proj-radial" transform="rotate(352.5, 732.8, 378.8)" dominant-baseline="central" text-anchor="middle">Klassenrat &amp; Partizipation</text>
+
+      <text x="732.8" y="461.2" class="proj-radial" transform="rotate(7.5, 732.8, 461.2)" dominant-baseline="central" text-anchor="middle">Politische Bildung (alle Fächer)</text>
+      <text x="711.5" y="540.7" class="proj-radial" transform="rotate(22.5, 711.5, 540.7)" dominant-baseline="central" text-anchor="middle">Leitfächer: PuG, Gesch., WR, Geo</text>
+      <text x="670.3" y="612.1" class="proj-radial" transform="rotate(37.5, 670.3, 612.1)" dominant-baseline="central" text-anchor="middle">Debattier- &amp; Diskursschulung</text>
+      <text x="612.1" y="670.3" class="proj-radial" transform="rotate(52.5, 612.1, 670.3)" dominant-baseline="central" text-anchor="middle">Bilingual &amp; Forscherklassen</text>
+      <text x="540.7" y="711.5" class="proj-radial" transform="rotate(67.5, 540.7, 711.5)" dominant-baseline="central" text-anchor="middle">Verfassungsviertelstunde</text>
+      <text x="461.2" y="732.8" class="proj-radial" transform="rotate(82.5, 461.2, 732.8)" dominant-baseline="central" text-anchor="middle">Medienbildung im Unterricht</text>
+
+      <text x="384.7" y="733.5" class="proj-radial" transform="rotate(276.4, 384.7, 733.5)" dominant-baseline="central" text-anchor="middle">AK Schule ohne Rassismus</text>
+      <text x="315.8" y="717.8" class="proj-radial" transform="rotate(289.3, 315.8, 717.8)" dominant-baseline="central" text-anchor="middle">AK Nachhaltigkeit (BNE)</text>
+      <text x="252.1" y="687.1" class="proj-radial" transform="rotate(302.1, 252.1, 687.1)" dominant-baseline="central" text-anchor="middle">Schülerzeitung „WiBa“</text>
+      <text x="196.9" y="643.1" class="proj-radial" transform="rotate(315.0, 196.9, 643.1)" dominant-baseline="central" text-anchor="middle">Play Fair &amp; Schulsanitäter</text>
+      <text x="152.9" y="587.9" class="proj-radial" transform="rotate(327.9, 152.9, 587.9)" dominant-baseline="central" text-anchor="middle">Erinnerungskultur &amp; Flossenbürg</text>
+      <text x="122.2" y="524.2" class="proj-radial" transform="rotate(340.7, 122.2, 524.2)" dominant-baseline="central" text-anchor="middle">Medienkonzept &amp; Medienscouts</text>
+      <text x="106.5" y="455.3" class="proj-radial" transform="rotate(353.6, 106.5, 455.3)" dominant-baseline="central" text-anchor="middle">Streitschlichter:innen</text>
+
+      <text x="107.2" y="378.8" class="proj-radial" transform="rotate(367.5, 107.2, 378.8)" dominant-baseline="central" text-anchor="middle">Austausch: Mayenne, Rom, Bolton</text>
+      <text x="128.5" y="299.3" class="proj-radial" transform="rotate(382.5, 128.5, 299.3)" dominant-baseline="central" text-anchor="middle">Girls‘ Day Akademie am PGN</text>
+      <text x="169.7" y="227.9" class="proj-radial" transform="rotate(397.5, 169.7, 227.9)" dominant-baseline="central" text-anchor="middle">Lokale Netzwerke in Nürnberg</text>
+      <text x="227.9" y="169.7" class="proj-radial" transform="rotate(412.5, 227.9, 169.7)" dominant-baseline="central" text-anchor="middle">Alumni &amp; Freunde des PGN e. V.</text>
+      <text x="299.3" y="128.5" class="proj-radial" transform="rotate(427.5, 299.3, 128.5)" dominant-baseline="central" text-anchor="middle">„Ganz Theater“ – Theater-Modell</text>
+      <text x="378.8" y="107.2" class="proj-radial" transform="rotate(442.5, 378.8, 107.2)" dominant-baseline="central" text-anchor="middle">Ganztag: gebunden und offen</text>
+
+      <!-- ================= 2. RING: DIE 8 FÜZ ================= -->
+      <path class="rad-klick" data-title="BNE & Globales Lernen" data-desc="Fächerübergreifendes Bildungsziel: Ökologische Verantwortung und globale Gerechtigkeit." d="M 420.0 200.0 A 220 220 0 0 1 575.6 264.4 L 538.8 301.2 A 168 168 0 0 0 420.0 252.0 Z" fill="#E1F0F2" stroke="#ffffff" stroke-width="2" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Medienbildung / Digitale Bildung" data-desc="Fächerübergreifendes Bildungsziel: Souveräne Mediennutzung, Quellenkritik und Datenschutz." d="M 575.6 264.4 A 220 220 0 0 1 640.0 420.0 L 588.0 420.0 A 168 168 0 0 0 538.8 301.2 Z" fill="#FDEBD9" stroke="#ffffff" stroke-width="2" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Wertebildung" data-desc="Fächerübergreifendes Bildungsziel: Demokratischer Wertekonsens, Menschenwürde und Toleranz." d="M 640.0 420.0 A 220 220 0 0 1 575.6 575.6 L 538.8 538.8 A 168 168 0 0 0 588.0 420.0 Z" fill="#E1F0F2" stroke="#ffffff" stroke-width="2" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Soziales Lernen" data-desc="Fächerübergreifendes Bildungsziel: Empathie, Konfliktfähigkeit und Verantwortung für andere." d="M 575.6 575.6 A 220 220 0 0 1 420.0 640.0 L 420.0 588.0 A 168 168 0 0 0 538.8 538.8 Z" fill="#FDEBD9" stroke="#ffffff" stroke-width="2" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Kulturelle Bildung" data-desc="Fächerübergreifendes Bildungsziel: Kulturelle Teilhabe, Kunst, Musik und darstellendes Spiel." d="M 420.0 640.0 A 220 220 0 0 1 264.4 575.6 L 301.2 538.8 A 168 168 0 0 0 420.0 588.0 Z" fill="#E1F0F2" stroke="#ffffff" stroke-width="2" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Interkulturelle Bildung" data-desc="Fächerübergreifendes Bildungsziel: Perspektivenwechsel und konstruktives Miteinander in Vielfalt." d="M 264.4 575.6 A 220 220 0 0 1 200.0 420.0 L 252.0 420.0 A 168 168 0 0 0 301.2 538.8 Z" fill="#FDEBD9" stroke="#ffffff" stroke-width="2" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Sprachliche Bildung" data-desc="Fächerübergreifendes Bildungsziel: Differenzierte Ausdrucksfähigkeit als Basis demokratischer Diskurse." d="M 200.0 420.0 A 220 220 0 0 1 264.4 264.4 L 301.2 301.2 A 168 168 0 0 0 252.0 420.0 Z" fill="#E1F0F2" stroke="#ffffff" stroke-width="2" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Ökonomische Verbraucherbildung" data-desc="Fächerübergreifendes Bildungsziel: Mündige Entscheidungen in Konsum-, Finanz- und Arbeitswelt." d="M 264.4 264.4 A 220 220 0 0 1 420.0 200.0 L 420.0 252.0 A 168 168 0 0 0 301.2 301.2 Z" fill="#FDEBD9" stroke="#ffffff" stroke-width="2" onclick="openBoard()" />
+
+      <text class="fuez-curved"><textPath href="#path-fuez-n"  startOffset="50%" text-anchor="middle">BNE &amp; GLOBALES LERNEN</textPath></text>
+      <text class="fuez-curved"><textPath href="#path-fuez-no" startOffset="50%" text-anchor="middle">MEDIENBILDUNG</textPath></text>
+      <text class="fuez-curved"><textPath href="#path-fuez-so" startOffset="50%" text-anchor="middle">WERTEBILDUNG</textPath></text>
+      <text class="fuez-curved"><textPath href="#path-fuez-s"  startOffset="50%" text-anchor="middle">SOZIALES LERNEN</textPath></text>
+      <text class="fuez-curved"><textPath href="#path-fuez-sw" startOffset="50%" text-anchor="middle">KULTURELLE BILDUNG</textPath></text>
+      <text class="fuez-curved"><textPath href="#path-fuez-ws" startOffset="50%" text-anchor="middle">INTERKULTURELLE BILDUNG</textPath></text>
+      <text class="fuez-curved"><textPath href="#path-fuez-wn" startOffset="50%" text-anchor="middle">SPRACHLICHE BILDUNG</textPath></text>
+      <text class="fuez-curved"><textPath href="#path-fuez-nw" startOffset="50%" text-anchor="middle">VERBRAUCHERBILDUNG</textPath></text>
+
+      <!-- ================= 3. MITTLERER RING: DIE 4 KATEGORIEN ================= -->
+      <path class="rad-klick" data-title="Säule: Mitwirkung" data-desc="Gelebte Schülerdemokratie in 3-Dutzend-Konferenz, SMV, Klassenrat und Arbeitskreisen." d="M 420 420 L 420 255 A 165 165 0 0 1 585 420 Z" fill="#EF7D00" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Säule: Unterrichtliches" data-desc="Politische Bildung als Unterrichtsprinzip in allen Fächern und in unseren Leitfächern." d="M 420 420 L 585 420 A 165 165 0 0 1 420 585 Z" fill="#3D5774" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Säule: Außerunterrichtliches" data-desc="Wertebildung, Erinnerungskultur, Nachhaltigkeit und soziales Engagement im Schulleben." d="M 420 420 L 420 585 A 165 165 0 0 1 255 420 Z" fill="#28424B" onclick="openBoard()" />
+      <path class="rad-klick" data-title="Säule: Kooperationen" data-desc="Translokale Vernetzung in Nürnberg, Europa und mit starken zivilgesellschaftlichen Partnern." d="M 420 420 L 255 420 A 165 165 0 0 1 420 255 Z" fill="#58AEBA" onclick="openBoard()" />
+
+      <text class="text-curved-main"><textPath href="#path-mitwirkung-main" startOffset="50%" text-anchor="middle">MITWIRKUNG</textPath></text>
+      <text class="text-curved-sub"><textPath href="#path-mitwirkung-sub"   startOffset="50%" text-anchor="middle">3-Dutzend &amp; SMV</textPath></text>
+
+      <text class="text-curved-main"><textPath href="#path-unterricht-main" startOffset="50%" text-anchor="middle">UNTERRICHTLICHES</textPath></text>
+      <text class="text-curved-sub"><textPath href="#path-unterricht-sub"   startOffset="50%" text-anchor="middle">Leitfächer &amp; FÜZ</textPath></text>
+
+      <text class="text-curved-main" style="font-size: 10.5px; letter-spacing: 0.4px;"><textPath href="#path-ausser-main" startOffset="50%" text-anchor="middle">AUSSERUNTERRICHTLICHES</textPath></text>
+      <text class="text-curved-sub"><textPath href="#path-ausser-sub"       startOffset="50%" text-anchor="middle">Fahrten &amp; Gedenken</textPath></text>
+
+      <text class="text-curved-main"><textPath href="#path-koop-main"       startOffset="50%" text-anchor="middle">KOOPERATIONEN</textPath></text>
+      <text class="text-curved-sub"><textPath href="#path-koop-sub"         startOffset="50%" text-anchor="middle">Partner &amp; Netzwerke</textPath></text>
+
+      <!-- ================= 4. ZENTRUM ================= -->
+      <circle class="rad-klick" data-title="Politische Bildung am PGN" data-desc="Klicken Sie hier, um zur gesamten TaskCards-Übersicht unseres Schulkonzepts zu gelangen." cx="420" cy="420" r="90" fill="#3D5774" stroke="#ffffff" stroke-width="5" onclick="openBoard()" />
+      <text x="420" y="410" class="center-normal-main">DEMOKRATIE am PGN</text>
+      <text x="420" y="434" class="center-normal-sub">lernen und (er)leben</text>
+    </svg>
+  </div>
+
+  <div class="link-box">
+    <a href="https://mz-nuernberg.taskcards.app/#/board/cdfc0a8c-8632-4f80-a16f-f8f33f460d5c?token=043daa88-1d6a-4311-880c-2aea0112fe19" target="_blank" rel="noopener noreferrer">
+      🔗 Hier klicken, um die vollständige TaskCards-Pinnwand (inkl. Beutelsbacher Konsens &amp; Details) zu öffnen
+    </a>
+  </div>
+
+  <script>
+    const BOARD_URL = 'https://mz-nuernberg.taskcards.app/#/board/cdfc0a8c-8632-4f80-a16f-f8f33f460d5c?token=043daa88-1d6a-4311-880c-2aea0112fe19';
+    function openBoard() {
+      window.open(BOARD_URL, '_blank', 'noopener,noreferrer');
+    }
+
+    const tooltip = document.getElementById('rad-tooltip');
+    const segments = document.querySelectorAll('.rad-klick');
+
+    segments.forEach(seg => {
+      seg.addEventListener('mouseenter', (e) => {
+        const title = seg.getAttribute('data-title');
+        const desc = seg.getAttribute('data-desc');
+        if (title) {
+          tooltip.innerHTML = `<strong>${title}</strong>${desc || ''}`;
+          tooltip.style.display = 'block';
+        }
+      });
+
+      seg.addEventListener('mousemove', (e) => {
+        const offset = 15;
+        let left = e.clientX + offset;
+        let top = e.clientY + offset;
+
+        if (left + 290 > window.innerWidth) {
+          left = e.clientX - 290;
+        }
+        if (top + 100 > window.innerHeight) {
+          top = e.clientY - 90;
+        }
+
+        tooltip.style.left = left + 'px';
+        tooltip.style.top = top + 'px';
+      });
+
+      seg.addEventListener('mouseleave', () => {
+        tooltip.style.display = 'none';
+      });
+    });
+  </script>
+
+</body>
+</html>
